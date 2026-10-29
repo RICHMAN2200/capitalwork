@@ -32,7 +32,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: import("@tanstack/react-router").ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
 
@@ -72,17 +72,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CapitalworkCreations — Digital Marketing & Web Design Agency in Kitengela, Nairobi & Kenya" },
-      { name: "description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency in Kitengela, serving Nairobi and all of Kenya." },
-      { property: "og:title", content: "CapitalworkCreations — Digital Marketing & Web Design Agency in Kitengela, Nairobi & Kenya" },
-      { property: "og:description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency in Kitengela, serving Nairobi and all of Kenya." },
+      { title: "CapitalworkCreations — Digital Marketing & Web Design Agency in Nairobi & Kenya" },
+      { name: "description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency serving Nairobi and all of Kenya." },
+      { property: "og:title", content: "CapitalworkCreations — Digital Marketing & Web Design Agency in Nairobi & Kenya" },
+      { property: "og:description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency serving Nairobi and all of Kenya." },
       { property: "og:site_name", content: "CapitalworkCreations" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "CapitalworkCreations — Digital Marketing & Web Design Agency in Kitengela, Nairobi & Kenya" },
-      { name: "twitter:description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency in Kitengela, serving Nairobi and all of Kenya." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/643ebc57-9ae2-4bd0-af35-43deec83ca62/id-preview-4b6efce5--b9e0cf1e-2c32-4af8-9edd-5d9aefd3f725.lovable.app-1778690345743.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/643ebc57-9ae2-4bd0-af35-43deec83ca62/id-preview-4b6efce5--b9e0cf1e-2c32-4af8-9edd-5d9aefd3f725.lovable.app-1778690345743.png" },
+      { name: "twitter:title", content: "CapitalworkCreations — Digital Marketing & Web Design Agency in Nairobi & Kenya" },
+      { name: "twitter:description", content: "CapitalworkCreations is a results-driven digital marketing and web design agency serving Nairobi and all of Kenya." },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

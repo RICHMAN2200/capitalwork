@@ -9,10 +9,12 @@ export const Route = createFileRoute("/audit")({
   head: () => ({
     meta: [
       { title: "Free Performance Audit | CapitalworkCreations Kenya" },
-      { name: "description", content: "Book a free 30-minute digital marketing audit with CapitalworkCreations. Find out where your business is leaking growth — across Kitengela, Nairobi & Kenya." },
-      { name: "keywords", content: "free marketing audit Kenya, SEO audit Nairobi, digital audit Kitengela, marketing consultation Kenya" },
+      { name: "description", content: "Book a free 30-minute digital marketing audit with CapitalworkCreations. Find out where your business is leaking growth — across Nairobi & Kenya." },
+      { name: "keywords", content: "free marketing audit Kenya, SEO audit Nairobi, digital audit Kenya, marketing consultation Kenya" },
       { property: "og:title", content: "Free Performance Audit — CapitalworkCreations" },
       { property: "og:description", content: "Find out where you're leaking growth." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/audit" }],
   }),

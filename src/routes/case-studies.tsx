@@ -6,9 +6,11 @@ export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
       { title: "Results & Case Studies — CapitalworkCreations Kenya" },
-      { name: "description", content: "Real results from Kenyan brands — life coaches, technical institutes, restaurants, and more — ranking #1 in Kitengela & Nairobi with CapitalworkCreations." },
+      { name: "description", content: "Real results from Kenyan brands — life coaches, technical institutes, restaurants, and more — ranking #1 in Nairobi & Kenya with CapitalworkCreations." },
       { property: "og:title", content: "Results & Case Studies — CapitalworkCreations" },
       { property: "og:description", content: "Real growth outcomes for ambitious Kenyan brands." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/case-studies" }],
     scripts: [
@@ -65,9 +67,9 @@ const FEATURED = [
   {
     client: "Nairobi South Institute",
     category: "Audit • GBP • Website • Socials • SEO",
-    headline: "Now ranking #1 for technical institutes in Kitengela & Nairobi",
+    headline: "Now ranking #1 for technical institutes across Nairobi",
     metric: "#1",
-    label: "Technical institute search — Kitengela & Nairobi",
+    label: "Technical institute search — Nairobi & Kenya",
     quote:
       "They gave me an audit regarding my online marketing — specifically the Google Business Profile, website, socials, and SEO. Very informative and helpful, and I would for sure recommend this to other businesses looking to scale their brand online. Our brand is now ranking top in Kitengela and Nairobi when it comes to technical institutes. Capitalworkscreations are truly the people built for this job.",
     author: "Director, Nairobi South Institute",

@@ -101,7 +101,7 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 }
 
@@ -123,3 +123,28 @@
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-rise { animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Connected system visual language */
+@layer utilities {
+  .bg-system-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--forest) 7%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--forest) 7%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .bg-system-grid-dark {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, white 7%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, white 7%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .flow-line { stroke-dasharray: 3 9; animation: cwc-flow 2.4s linear infinite; }
+  .node-pulse { animation: cwc-pulse 4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  .spin-slow { animation: cwc-spin 40s linear infinite; transform-box: fill-box; transform-origin: center; }
+}
+@keyframes cwc-flow { to { stroke-dashoffset: -24; } }
+@keyframes cwc-pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes cwc-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .flow-line, .node-pulse, .spin-slow { animation: none; }
+}

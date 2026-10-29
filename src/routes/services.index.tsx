@@ -7,11 +7,13 @@ import { PILLARS } from "@/lib/services-data";
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Services — Digital Marketing & Web Design in Kenya | CapitalworkCreations" },
-      { name: "description", content: "Explore the 10 core services from CapitalworkCreations — SEO, Google Ads, social media, GBP, web design and more — built for Kitengela, Nairobi, and all of Kenya." },
-      { name: "keywords", content: "digital marketing services Kenya, SEO services Nairobi, Google Ads Kitengela, web design Kenya, social media management" },
-      { property: "og:title", content: "Services — CapitalworkCreations" },
-      { property: "og:description", content: "Ten growth services for Kenyan businesses. Pick a category to learn more." },
+      { title: "Digital Marketing & Design Services in Kenya | CapitalworkCreations" },
+      { name: "description", content: "Explore SEO, Google Ads, social media, Google Business Profile, website and brand design services for Nairobi, Kenya and clients beyond Kenya." },
+      { name: "keywords", content: "digital marketing services Kenya, SEO services Nairobi, Google Ads Kenya, web design Kenya, social media management" },
+      { property: "og:title", content: "Digital Marketing & Design Services | CapitalworkCreations" },
+      { property: "og:description", content: "Find the digital service that fits your audience and growth goal." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/services" }],
   }),
@@ -25,10 +27,10 @@ function ServicesIndex() {
         <div className="mx-auto max-w-7xl px-6 pt-24 pb-16">
           <span className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">Our Services</span>
           <h1 className="mt-3 font-display text-5xl md:text-6xl text-foreground max-w-3xl text-balance font-semibold">
-            Ten categories. Pick yours.
+            Find the service your growth needs.
           </h1>
           <p className="mt-5 text-lg text-foreground/80 max-w-2xl">
-            Each category opens its own dedicated page with the specialized service tracks built for your industry — across Kitengela, Nairobi, and Kenya.
+            Explore services for your website, search visibility, content and campaigns in Nairobi, Kenya and beyond Kenya.
           </p>
           <div className="mt-8 max-w-2xl">
             <QuickActions />

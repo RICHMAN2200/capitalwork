@@ -9,29 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as CaseStudiesRouteImport } from './routes/case-studies'
-import { Route as AuditRouteImport } from './routes/audit'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuditRouteImport } from './routes/audit'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as MarketingSectorRouteImport } from './routes/marketing.$sector'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
-import { Route as ServicesPillarRouteImport } from './routes/services.$pillar'
+import { Route as ServicesPillarIndexRouteImport } from './routes/services.$pillar.index'
 import { Route as ServicesPillarServiceRouteImport } from './routes/services.$pillar.$service'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CaseStudiesRoute = CaseStudiesRouteImport.update({
-  id: '/case-studies',
-  path: '/case-studies',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuditRoute = AuditRouteImport.update({
@@ -39,9 +30,24 @@ const AuditRoute = AuditRouteImport.update({
   path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingSectorRoute = MarketingSectorRouteImport.update({
+  id: '/marketing/$sector',
+  path: '/marketing/$sector',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
@@ -54,15 +60,15 @@ const ServicesSeoRoute = ServicesSeoRouteImport.update({
   path: '/seo',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesPillarRoute = ServicesPillarRouteImport.update({
-  id: '/$pillar',
-  path: '/$pillar',
+const ServicesPillarIndexRoute = ServicesPillarIndexRouteImport.update({
+  id: '/$pillar/',
+  path: '/$pillar/',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ServicesPillarServiceRoute = ServicesPillarServiceRouteImport.update({
-  id: '/$service',
-  path: '/$service',
-  getParentRoute: () => ServicesPillarRoute,
+  id: '/$pillar/$service',
+  path: '/$pillar/$service',
+  getParentRoute: () => ServicesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -71,20 +77,22 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/services/$pillar': typeof ServicesPillarRouteWithChildren
+  '/marketing/$sector': typeof MarketingSectorRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$pillar/$service': typeof ServicesPillarServiceRoute
+  '/services/$pillar/': typeof ServicesPillarIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
   '/case-studies': typeof CaseStudiesRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/services/$pillar': typeof ServicesPillarRouteWithChildren
+  '/marketing/$sector': typeof MarketingSectorRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services': typeof ServicesIndexRoute
   '/services/$pillar/$service': typeof ServicesPillarServiceRoute
+  '/services/$pillar': typeof ServicesPillarIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,10 +101,11 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/services/$pillar': typeof ServicesPillarRouteWithChildren
+  '/marketing/$sector': typeof MarketingSectorRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/': typeof ServicesIndexRoute
   '/services/$pillar/$service': typeof ServicesPillarServiceRoute
+  '/services/$pillar/': typeof ServicesPillarIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -106,20 +115,22 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/services'
     | '/sitemap.xml'
-    | '/services/$pillar'
+    | '/marketing/$sector'
     | '/services/seo'
     | '/services/'
     | '/services/$pillar/$service'
+    | '/services/$pillar/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/audit'
     | '/case-studies'
     | '/sitemap.xml'
-    | '/services/$pillar'
+    | '/marketing/$sector'
     | '/services/seo'
     | '/services'
     | '/services/$pillar/$service'
+    | '/services/$pillar'
   id:
     | '__root__'
     | '/'
@@ -127,10 +138,11 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/services'
     | '/sitemap.xml'
-    | '/services/$pillar'
+    | '/marketing/$sector'
     | '/services/seo'
     | '/services/'
     | '/services/$pillar/$service'
+    | '/services/$pillar/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -139,29 +151,16 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  MarketingSectorRoute: typeof MarketingSectorRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/case-studies': {
-      id: '/case-studies'
-      path: '/case-studies'
-      fullPath: '/case-studies'
-      preLoaderRoute: typeof CaseStudiesRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/audit': {
@@ -171,11 +170,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/$sector': {
+      id: '/marketing/$sector'
+      path: '/marketing/$sector'
+      fullPath: '/marketing/$sector'
+      preLoaderRoute: typeof MarketingSectorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/': {
@@ -192,45 +212,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSeoRouteImport
       parentRoute: typeof ServicesRoute
     }
-    '/services/$pillar': {
-      id: '/services/$pillar'
+    '/services/$pillar/': {
+      id: '/services/$pillar/'
       path: '/$pillar'
-      fullPath: '/services/$pillar'
-      preLoaderRoute: typeof ServicesPillarRouteImport
+      fullPath: '/services/$pillar/'
+      preLoaderRoute: typeof ServicesPillarIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/services/$pillar/$service': {
       id: '/services/$pillar/$service'
-      path: '/$service'
+      path: '/$pillar/$service'
       fullPath: '/services/$pillar/$service'
       preLoaderRoute: typeof ServicesPillarServiceRouteImport
-      parentRoute: typeof ServicesPillarRoute
+      parentRoute: typeof ServicesRoute
     }
   }
 }
 
-interface ServicesPillarRouteChildren {
-  ServicesPillarServiceRoute: typeof ServicesPillarServiceRoute
-}
-
-const ServicesPillarRouteChildren: ServicesPillarRouteChildren = {
-  ServicesPillarServiceRoute: ServicesPillarServiceRoute,
-}
-
-const ServicesPillarRouteWithChildren = ServicesPillarRoute._addFileChildren(
-  ServicesPillarRouteChildren,
-)
-
 interface ServicesRouteChildren {
-  ServicesPillarRoute: typeof ServicesPillarRouteWithChildren
   ServicesSeoRoute: typeof ServicesSeoRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ServicesPillarServiceRoute: typeof ServicesPillarServiceRoute
+  ServicesPillarIndexRoute: typeof ServicesPillarIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
-  ServicesPillarRoute: ServicesPillarRouteWithChildren,
   ServicesSeoRoute: ServicesSeoRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ServicesPillarServiceRoute: ServicesPillarServiceRoute,
+  ServicesPillarIndexRoute: ServicesPillarIndexRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
@@ -243,6 +253,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  MarketingSectorRoute: MarketingSectorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

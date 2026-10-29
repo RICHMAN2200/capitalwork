@@ -32,7 +32,7 @@ export function SiteFooter() {
           <ul className="space-y-2 text-sm text-primary-foreground/80">
             {PILLARS.slice(0, 6).map((p) => (
               <li key={p.slug}>
-                <Link to="/services/$pillar" params={{ pillar: p.slug }} className="hover:text-white">
+                <Link to={p.slug === "seo" ? "/services/seo" : "/services/$pillar"} params={{ pillar: p.slug }} className="hover:text-white">
                   {p.title}
                 </Link>
               </li>
@@ -56,7 +56,7 @@ export function SiteFooter() {
       <div className="border-t border-white/15">
         <div className="mx-auto max-w-7xl px-6 py-6 text-xs text-primary-foreground/70 flex flex-wrap gap-2 justify-between">
           <span>© {new Date().getFullYear()} CapitalworkCreations. All rights reserved.</span>
-          <span>Built in Kitengela. Serving Kenya.</span>
+          <span>Built for Kenya. Serving nationwide.</span>
         </div>
       </div>
     </footer>

@@ -3,16 +3,16 @@ import { CONTACT } from "@/lib/services-data";
 
 type Variant = "light" | "dark";
 
-export function QuickActions({ variant = "light", label = "Already know us? Skip the scroll —" }: { variant?: Variant; label?: string }) {
+export function QuickActions({ variant = "light", label = "Already know us? Contact us directly." }: { variant?: Variant; label?: string }) {
   const wa = `https://wa.me/${CONTACT.phoneDigits}?text=${encodeURIComponent(CONTACT.whatsappMessage)}`;
   const isDark = variant === "dark";
   const base = isDark
-    ? "bg-white text-primary hover:bg-white/90"
+    ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
     : "bg-primary text-primary-foreground hover:bg-foreground shadow-soft";
   const ghost = isDark
-    ? "bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary"
+    ? "bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
     : "bg-background border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground";
-  const labelClass = isDark ? "text-white" : "text-foreground";
+  const labelClass = isDark ? "text-primary-foreground" : "text-foreground";
 
   return (
     <div className="rounded-2xl">
@@ -21,7 +21,7 @@ export function QuickActions({ variant = "light", label = "Already know us? Skip
         <a href={`tel:${CONTACT.phone}`} className={`inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold transition ${base}`}>
           <Phone className="h-4 w-4" /> Call Now
         </a>
-        <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-[#25D366] text-white px-4 py-2.5 text-sm font-bold hover:bg-[#1ebe5a] transition">
+        <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-md bg-secondary text-primary-foreground px-4 py-2.5 text-sm font-bold hover:bg-secondary/90 transition">
           <MessageCircle className="h-4 w-4" /> WhatsApp
         </a>
         <a href={`mailto:${CONTACT.email}`} className={`inline-flex items-center gap-2 rounded-md px-4 py-2.5 text-sm font-bold transition ${ghost}`}>
